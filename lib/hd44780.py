@@ -68,7 +68,8 @@ class HD44780(object):
   
   def __init__(self,i2c=None,address=ADDRESS,trans_map={}):
     if i2c is None:
-      i2c = busio.I2C(board.SCL,board.SDA)
+      #i2c = busio.I2C(board.SCL,board.SDA)      
+      i2c = busio.I2C(board.GP1,board.GP0,frequency=40000) #this work for my rasperry pico
     self._device = I2CDevice(i2c,address)
     self.trans_map = trans_map
 
